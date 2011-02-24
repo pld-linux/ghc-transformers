@@ -1,18 +1,16 @@
-%define	pkgname	transformers
+%define		pkgname	transformers
 Summary:	Concrete functor and monad transformers
 Name:		ghc-%{pkgname}
 Version:	0.2.2.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	3470ac66116900cd1ba84d3744474e49
-URL:		http://hackage.haskell.org/package/%{pkgname}/
+URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
 %requires_releq	ghc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		ghcdir		ghc-%(/usr/bin/ghc --numeric-version)
 
 %description
 This package contains the monad transformer class, the concrete monad
@@ -51,10 +49,10 @@ runhaskell Setup.hs register \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/bin/ghc-pkg recache
+%ghc_pkg_recache
 
 %postun
-/usr/bin/ghc-pkg recache
+%ghc_pkg_recache
 
 %files
 %defattr(644,root,root,755)
