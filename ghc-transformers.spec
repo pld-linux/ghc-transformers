@@ -2,15 +2,19 @@
 Summary:	Concrete functor and monad transformers
 Name:		ghc-%{pkgname}
 Version:	0.2.2.0
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	3470ac66116900cd1ba84d3744474e49
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
-%requires_releq	ghc
+BuildRequires:	rpmbuild(macros) >= 1.608
+%requires_eq	ghc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# debuginfo is not useful for ghc
+%define		_enable_debug_packages	0
 
 %description
 This package contains the monad transformer class, the concrete monad
@@ -40,7 +44,7 @@ runhaskell Setup.hs copy --destdir=$RPM_BUILD_ROOT
 
 # work around automatic haddock docs installation
 rm -rf %{name}-%{version}-doc
-cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} %{name}-%{version}-doc
+cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
 
 runhaskell Setup.hs register \
 	--gen-pkg-config=$RPM_BUILD_ROOT/%{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
@@ -56,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %{name}-%{version}-doc/html
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
+
+%files doc
+%defattr(644,root,root,755)
+%doc %{name}-%{version}-doc/*
