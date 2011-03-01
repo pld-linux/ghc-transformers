@@ -23,6 +23,17 @@ Haskell 98 code, or with the monad classes in the monads-fd or
 monads-tf packages, which automatically lift operations introduced by
 monad transformers through other transformers.
 
+%package doc
+Summary:	HTML documentation for %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla %{pkgname}
+Group:		Documentation
+
+%description doc
+HTML documentation for %{pkgname}.
+
+%description doc -l pl.UTF-8
+Dokumentacja w formacie HTML dla %{pkgname}.
+
 %prep
 %setup -q -n %{pkgname}-%{version}
 
