@@ -1,12 +1,12 @@
 %define		pkgname	transformers
 Summary:	Concrete functor and monad transformers
 Name:		ghc-%{pkgname}
-Version:	0.2.2.0
-Release:	5
+Version:	0.3.0.0
+Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	3470ac66116900cd1ba84d3744474e49
+# Source0-md5:	852dc0b79cc2bcb39136287d3dd385e5
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	rpmbuild(macros) >= 1.608
