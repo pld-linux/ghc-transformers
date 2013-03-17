@@ -1,11 +1,12 @@
 %define		pkgname	transformers
 Summary:	Concrete functor and monad transformers
+Summary(pl.UTF-8):	Funktory konkretne i przekształcenia monad
 Name:		ghc-%{pkgname}
 Version:	0.3.0.0
 Release:	1
 License:	BSD
 Group:		Development/Languages
-Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
+Source0:	http://hackage.haskell.org/packages/archive/transformers/%{version}/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	852dc0b79cc2bcb39136287d3dd385e5
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
@@ -23,16 +24,23 @@ Haskell 98 code, or with the monad classes in the monads-fd or
 monads-tf packages, which automatically lift operations introduced by
 monad transformers through other transformers.
 
+%description -l pl.UTF-8
+Ten pakiet zawiera klasę przekształceń monad, konkretne
+przekształcenia monad, operacje oraz podniesienia. Może być używana
+samodzielnie w kodzie Haskella 98 albo z klasami monad z pakietów
+monads-fd lub monads-tf, które automatycznie podnoszą operacje
+wprowadzone przez przekształcenia monad poprzez inne przekształcenia.
+
 %package doc
 Summary:	HTML documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla pakietu %{pkgname}
 Group:		Documentation
 
 %description doc
 HTML documentation for %{pkgname}.
 
 %description doc -l pl.UTF-8
-Dokumentacja w formacie HTML dla %{pkgname}.
+Dokumentacja w formacie HTML dla pakietu %{pkgname}.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
@@ -60,6 +68,9 @@ cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
 runhaskell Setup.hs register \
 	--gen-pkg-config=$RPM_BUILD_ROOT/%{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 
+# packaged as %doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/ghc-transformers-%{version}/{LICENSE,html}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -71,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc LICENSE
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
 
