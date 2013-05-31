@@ -3,7 +3,7 @@ Summary:	Concrete functor and monad transformers
 Summary(pl.UTF-8):	Funktory konkretne i przekształcenia monad
 Name:		ghc-%{pkgname}
 Version:	0.3.0.0
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/transformers/%{version}/%{pkgname}-%{version}.tar.gz
@@ -64,13 +64,10 @@ runhaskell Setup.hs copy --destdir=$RPM_BUILD_ROOT
 # work around automatic haddock docs installation
 %{__rm} -rf %{name}-%{version}-doc
 cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
-%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 runhaskell Setup.hs register \
 	--gen-pkg-config=$RPM_BUILD_ROOT/%{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
-
-# packaged as %doc
-%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/ghc-transformers-%{version}/{LICENSE,html}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
