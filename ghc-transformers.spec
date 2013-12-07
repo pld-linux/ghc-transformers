@@ -6,7 +6,8 @@ Version:	0.3.0.0
 Release:	3
 License:	BSD
 Group:		Development/Languages
-Source0:	http://hackage.haskell.org/packages/archive/transformers/%{version}/%{pkgname}-%{version}.tar.gz
+#Source0Download: http://hackage.haskell.org/package/transformers
+Source0:	http://hackage.haskell.org/package/transformers-%{version}/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	852dc0b79cc2bcb39136287d3dd385e5
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
