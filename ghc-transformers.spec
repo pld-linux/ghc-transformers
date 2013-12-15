@@ -15,13 +15,24 @@ Source0:	http://hackage.haskell.org/package/transformers-%{version}/%{pkgname}-%
 # Source0-md5:	852dc0b79cc2bcb39136287d3dd385e5
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
-%{?with_prof:BuildRequires:	ghc-prof >= 6.12.3}
+BuildRequires:	ghc-base >= 2
+BuildRequires:	ghc-base < 6
+%if %{with prof}
+BuildRequires:	ghc-prof >= 6.12.3
+BuildRequires:	ghc-base-prof >= 2
+BuildRequires:	ghc-base-prof < 6
+%endif
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
+Requires:	ghc-base >= 2
+Requires:	ghc-base < 6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # debuginfo is not useful for ghc
 %define		_enable_debug_packages	0
+
+# don't compress haddock files
+%define		_noautocompressdoc	*.haddock
 
 %description
 This package contains the monad transformer class, the concrete monad
@@ -42,6 +53,8 @@ Summary:	Profiling %{pkgname} library for GHC
 Summary(pl.UTF-8):	Biblioteka profilująca %{pkgname} dla GHC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	ghc-base-prof >= 2
+Requires:	ghc-base-prof < 6
 
 %description prof
 Profiling %{pkgname} library for GHC. Should be installed when
