@@ -6,13 +6,13 @@
 Summary:	Concrete functor and monad transformers
 Summary(pl.UTF-8):	Funktory konkretne i przekształcenia monad
 Name:		ghc-%{pkgname}
-Version:	0.3.0.0
-Release:	3
+Version:	0.4.1.0
+Release:	1
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/transformers
 Source0:	http://hackage.haskell.org/package/transformers-%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	852dc0b79cc2bcb39136287d3dd385e5
+# Source0-md5:	47ec354f49f42af7aaded0949e5d2bf3
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-base >= 2
@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative/*.hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/*.hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/IO
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/IO/*.hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans
@@ -142,6 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}_p.a
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/IO/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/RWS/*.p_hi
