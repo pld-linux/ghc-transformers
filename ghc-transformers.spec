@@ -6,13 +6,13 @@
 Summary:	Concrete functor and monad transformers
 Summary(pl.UTF-8):	Funktory konkretne i przekształcenia monad
 Name:		ghc-%{pkgname}
-Version:	0.4.1.0
+Version:	0.5.6.2
 Release:	1
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/transformers
 Source0:	http://hackage.haskell.org/package/transformers-%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	47ec354f49f42af7aaded0949e5d2bf3
+# Source0-md5:	c452befb2a15063428989bb366b2bf19
 URL:		http://hackage.haskell.org/package/transformers/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-base >= 2
@@ -117,34 +117,39 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/HStransformers-%{version}.o
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}.a
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}-*.so
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}-*.a
+%exclude %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}-*_p.a
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/*.hi
-%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/IO
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/IO/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/RWS
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/RWS/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/RWS/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/State
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/State/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/State/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/Writer
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/Writer/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/Writer/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/Functor
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/Functor/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/Functor/*.dyn_hi
 
 %if %{with prof}
 %files prof
 %defattr(644,root,root,755)
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}_p.a
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHStransformers-%{version}-*_p.a
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Applicative/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/*.p_hi
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/IO/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/RWS/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Control/Monad/Trans/State/*.p_hi
